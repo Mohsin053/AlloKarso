@@ -1,9 +1,16 @@
-import { View, Text } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+
+// stack imports
+import LoginStack from './LoginStack';
+import DriverStack from './DriverStack';
+import PassengerStack from './PassengerStack';
 
 export default function AppNav() {
 	return (
-		<View>
-			<Text style={{ color: 'red', fontSize: 13 }}>AppNav</Text>
-		</View>
+		<>
+			<NavigationContainer>
+				<PassengerStack />
+			</NavigationContainer>
+		</>
 	);
 }

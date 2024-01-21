@@ -1,10 +1,22 @@
-import { View, Text } from 'react-native';
-import React from 'react';
+import { createStackNavigator } from '@react-navigation/stack';
 
-export default function loginStack() {
+// login stack screens
+import LoginEmailScreen from '../PassengerApp/profilingScreen/LoginScreen/LoginEmailScreen';
+import OtpConfirmScreen from '../PassengerApp/profilingScreen/LoginScreen/OtpConfirmScreen';
+
+const Stack = createStackNavigator();
+
+export default function LoginStack() {
 	return (
-		<View>
-			<Text>loginStack</Text>
-		</View>
+		<Stack.Navigator screenOptions={{ headerShown: false }}>
+			<Stack.Screen
+				name='LoginEmailScreen'
+				component={LoginEmailScreen}
+			/>
+			<Stack.Screen
+				name='OtpConfirmScreen'
+				component={OtpConfirmScreen}
+			/>
+		</Stack.Navigator>
 	);
 }
