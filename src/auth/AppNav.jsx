@@ -4,6 +4,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import LoginStack from './LoginStack';
 import DriverStack from './DriverStack';
 import PassengerStack from './PassengerStack';
+import OnBoardingStack from './OnBoardingStack';
 
 export default function AppNav() {
 	return (

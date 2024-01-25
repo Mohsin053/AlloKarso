@@ -27,7 +27,7 @@ export default function TabNavigatorPassenger() {
 				component={RideRequestScreen}
 				options={{
 					tabBarIcon: ({ color, size }) => (
-						<Ionicons name={'home'} color={color} size={size} />
+						<Ionicons name={'list'} color={color} size={size} />
 					),
 				}}
 			/>
@@ -36,7 +36,7 @@ export default function TabNavigatorPassenger() {
 				component={DriverEarningScreen}
 				options={{
 					tabBarIcon: ({ color, size }) => (
-						<Ionicons name={'search'} color={color} size={size} />
+						<Ionicons name={'cash'} color={color} size={size} />
 					),
 				}}
 			/>
@@ -45,7 +45,7 @@ export default function TabNavigatorPassenger() {
 				component={RatingScreen}
 				options={{
 					tabBarIcon: ({ color, size }) => (
-						<Ionicons name={'search'} color={color} size={size} />
+						<Ionicons name={'star'} color={color} size={size} />
 					),
 				}}
 			/>
@@ -54,11 +54,7 @@ export default function TabNavigatorPassenger() {
 				component={DriverWalletScreen}
 				options={{
 					tabBarIcon: ({ color, size }) => (
-						<Ionicons
-							name={'newspaper'}
-							color={color}
-							size={size}
-						/>
+						<Ionicons name={'wallet'} color={color} size={size} />
 					),
 				}}
 			/>

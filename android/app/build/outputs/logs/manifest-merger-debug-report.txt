@@ -1,18 +1,20 @@
 -- Merging decision tree log ---
 manifest
-ADDED from C:\Users\Pavilion\Documents\Allo karso stuff\AlloKarso\android\app\src\main\AndroidManifest.xml:1:1-25:12
-MERGED from C:\Users\Pavilion\Documents\Allo karso stuff\AlloKarso\android\app\src\main\AndroidManifest.xml:1:1-25:12
+ADDED from C:\Users\Pavilion\Documents\Allo karso stuff\AlloKarso\android\app\src\main\AndroidManifest.xml:1:1-30:12
+MERGED from C:\Users\Pavilion\Documents\Allo karso stuff\AlloKarso\android\app\src\main\AndroidManifest.xml:1:1-30:12
 INJECTED from C:\Users\Pavilion\Documents\Allo karso stuff\AlloKarso\android\app\src\debug\AndroidManifest.xml:2:1-9:12
 INJECTED from C:\Users\Pavilion\Documents\Allo karso stuff\AlloKarso\android\app\src\debug\AndroidManifest.xml:2:1-9:12
 INJECTED from C:\Users\Pavilion\Documents\Allo karso stuff\AlloKarso\android\app\src\debug\AndroidManifest.xml:2:1-9:12
 MERGED from [com.facebook.react:flipper-integration:0.73.2] C:\Users\Pavilion\.gradle\caches\transforms-3\50aac7d389ae5d1436ebe9b90990835b\transformed\jetified-flipper-integration-0.73.2-debug\AndroidManifest.xml:2:1-7:12
+MERGED from [:react-native-vector-icons] C:\Users\Pavilion\Documents\Allo karso stuff\AlloKarso\node_modules\react-native-vector-icons\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-7:12
 MERGED from [:react-native-community_geolocation] C:\Users\Pavilion\Documents\Allo karso stuff\AlloKarso\node_modules\@react-native-community\geolocation\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-7:12
 MERGED from [:react-native-gesture-handler] C:\Users\Pavilion\Documents\Allo karso stuff\AlloKarso\node_modules\react-native-gesture-handler\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-7:12
 MERGED from [:react-native-linear-gradient] C:\Users\Pavilion\Documents\Allo karso stuff\AlloKarso\node_modules\react-native-linear-gradient\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-7:12
 MERGED from [:react-native-maps] C:\Users\Pavilion\Documents\Allo karso stuff\AlloKarso\node_modules\react-native-maps\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-7:12
+MERGED from [:react-native-reanimated] C:\Users\Pavilion\Documents\Allo karso stuff\AlloKarso\node_modules\react-native-reanimated\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-7:12
 MERGED from [:react-native-safe-area-context] C:\Users\Pavilion\Documents\Allo karso stuff\AlloKarso\node_modules\react-native-safe-area-context\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-7:12
 MERGED from [:react-native-screens] C:\Users\Pavilion\Documents\Allo karso stuff\AlloKarso\node_modules\react-native-screens\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-7:12
-MERGED from [:react-native-vector-icons] C:\Users\Pavilion\Documents\Allo karso stuff\AlloKarso\node_modules\react-native-vector-icons\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-7:12
+MERGED from [:react-native-svg] C:\Users\Pavilion\Documents\Allo karso stuff\AlloKarso\node_modules\react-native-svg\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-7:12
 MERGED from [com.facebook.react:react-android:0.73.2] C:\Users\Pavilion\.gradle\caches\transforms-3\d10d040f6dc36d35e250d48d5ebb15bd\transformed\jetified-react-android-0.73.2-debug\AndroidManifest.xml:2:1-24:12
 MERGED from [com.facebook.fresco:flipper-fresco-plugin:3.1.3] C:\Users\Pavilion\.gradle\caches\transforms-3\2b5ba21ddda073e33e012f0d689623c6\transformed\jetified-flipper-fresco-plugin-3.1.3\AndroidManifest.xml:8:1-13:12
 MERGED from [com.facebook.fresco:flipper:3.1.3] C:\Users\Pavilion\.gradle\caches\transforms-3\78a2f7f2f5ffb04c17532765310fabea\transformed\jetified-flipper-3.1.3\AndroidManifest.xml:2:1-7:12
@@ -109,10 +111,18 @@ MERGED from [com.google.android.gms:play-services-maps:18.2.0] C:\Users\Pavilion
 MERGED from [com.google.android.gms:play-services-maps:18.2.0] C:\Users\Pavilion\.gradle\caches\transforms-3\0126cf432a0db5456dc09bababb686af\transformed\jetified-play-services-maps-18.2.0\AndroidManifest.xml:24:5-67
 	android:name
 		ADDED from C:\Users\Pavilion\Documents\Allo karso stuff\AlloKarso\android\app\src\main\AndroidManifest.xml:3:22-64
+uses-permission#android.permission.VIBRATE
+ADDED from C:\Users\Pavilion\Documents\Allo karso stuff\AlloKarso\android\app\src\main\AndroidManifest.xml:4:5-66
+	android:name
+		ADDED from C:\Users\Pavilion\Documents\Allo karso stuff\AlloKarso\android\app\src\main\AndroidManifest.xml:4:22-63
+uses-permission#android.permission.ACCESS_FINE_LOCATION
+ADDED from C:\Users\Pavilion\Documents\Allo karso stuff\AlloKarso\android\app\src\main\AndroidManifest.xml:5:5-79
+	android:name
+		ADDED from C:\Users\Pavilion\Documents\Allo karso stuff\AlloKarso\android\app\src\main\AndroidManifest.xml:5:22-76
 application
-ADDED from C:\Users\Pavilion\Documents\Allo karso stuff\AlloKarso\android\app\src\main\AndroidManifest.xml:5:5-24:19
-MERGED from C:\Users\Pavilion\Documents\Allo karso stuff\AlloKarso\android\app\src\main\AndroidManifest.xml:5:5-24:19
-MERGED from C:\Users\Pavilion\Documents\Allo karso stuff\AlloKarso\android\app\src\main\AndroidManifest.xml:5:5-24:19
+ADDED from C:\Users\Pavilion\Documents\Allo karso stuff\AlloKarso\android\app\src\main\AndroidManifest.xml:7:5-29:19
+MERGED from C:\Users\Pavilion\Documents\Allo karso stuff\AlloKarso\android\app\src\main\AndroidManifest.xml:7:5-29:19
+MERGED from C:\Users\Pavilion\Documents\Allo karso stuff\AlloKarso\android\app\src\main\AndroidManifest.xml:7:5-29:19
 INJECTED from C:\Users\Pavilion\Documents\Allo karso stuff\AlloKarso\android\app\src\debug\AndroidManifest.xml:5:5-8:50
 MERGED from [com.facebook.react:react-android:0.73.2] C:\Users\Pavilion\.gradle\caches\transforms-3\d10d040f6dc36d35e250d48d5ebb15bd\transformed\jetified-react-android-0.73.2-debug\AndroidManifest.xml:18:5-22:19
 MERGED from [com.facebook.react:react-android:0.73.2] C:\Users\Pavilion\.gradle\caches\transforms-3\d10d040f6dc36d35e250d48d5ebb15bd\transformed\jetified-react-android-0.73.2-debug\AndroidManifest.xml:18:5-22:19
@@ -155,59 +165,67 @@ MERGED from [com.facebook.soloader:soloader:0.10.5] C:\Users\Pavilion\.gradle\ca
 	android:appComponentFactory
 		ADDED from [androidx.core:core:1.9.0] C:\Users\Pavilion\.gradle\caches\transforms-3\13659b94c66de92d98d7f8af61234b95\transformed\core-1.9.0\AndroidManifest.xml:28:18-86
 	android:label
-		ADDED from C:\Users\Pavilion\Documents\Allo karso stuff\AlloKarso\android\app\src\main\AndroidManifest.xml:7:7-39
-		ADDED from C:\Users\Pavilion\Documents\Allo karso stuff\AlloKarso\android\app\src\main\AndroidManifest.xml:7:7-39
+		ADDED from C:\Users\Pavilion\Documents\Allo karso stuff\AlloKarso\android\app\src\main\AndroidManifest.xml:9:7-39
+		ADDED from C:\Users\Pavilion\Documents\Allo karso stuff\AlloKarso\android\app\src\main\AndroidManifest.xml:9:7-39
 	tools:ignore
 		ADDED from C:\Users\Pavilion\Documents\Allo karso stuff\AlloKarso\android\app\src\debug\AndroidManifest.xml:8:9-48
 	android:roundIcon
-		ADDED from C:\Users\Pavilion\Documents\Allo karso stuff\AlloKarso\android\app\src\main\AndroidManifest.xml:9:7-52
-		ADDED from C:\Users\Pavilion\Documents\Allo karso stuff\AlloKarso\android\app\src\main\AndroidManifest.xml:9:7-52
+		ADDED from C:\Users\Pavilion\Documents\Allo karso stuff\AlloKarso\android\app\src\main\AndroidManifest.xml:11:7-52
+		ADDED from C:\Users\Pavilion\Documents\Allo karso stuff\AlloKarso\android\app\src\main\AndroidManifest.xml:11:7-52
 	tools:targetApi
 		ADDED from C:\Users\Pavilion\Documents\Allo karso stuff\AlloKarso\android\app\src\debug\AndroidManifest.xml:7:9-29
 	android:icon
-		ADDED from C:\Users\Pavilion\Documents\Allo karso stuff\AlloKarso\android\app\src\main\AndroidManifest.xml:8:7-41
-		ADDED from C:\Users\Pavilion\Documents\Allo karso stuff\AlloKarso\android\app\src\main\AndroidManifest.xml:8:7-41
+		ADDED from C:\Users\Pavilion\Documents\Allo karso stuff\AlloKarso\android\app\src\main\AndroidManifest.xml:10:7-41
+		ADDED from C:\Users\Pavilion\Documents\Allo karso stuff\AlloKarso\android\app\src\main\AndroidManifest.xml:10:7-41
 	android:allowBackup
-		ADDED from C:\Users\Pavilion\Documents\Allo karso stuff\AlloKarso\android\app\src\main\AndroidManifest.xml:10:7-34
-		ADDED from C:\Users\Pavilion\Documents\Allo karso stuff\AlloKarso\android\app\src\main\AndroidManifest.xml:10:7-34
+		ADDED from C:\Users\Pavilion\Documents\Allo karso stuff\AlloKarso\android\app\src\main\AndroidManifest.xml:12:7-34
+		ADDED from C:\Users\Pavilion\Documents\Allo karso stuff\AlloKarso\android\app\src\main\AndroidManifest.xml:12:7-34
 	android:theme
-		ADDED from C:\Users\Pavilion\Documents\Allo karso stuff\AlloKarso\android\app\src\main\AndroidManifest.xml:11:7-38
-		ADDED from C:\Users\Pavilion\Documents\Allo karso stuff\AlloKarso\android\app\src\main\AndroidManifest.xml:11:7-38
+		ADDED from C:\Users\Pavilion\Documents\Allo karso stuff\AlloKarso\android\app\src\main\AndroidManifest.xml:13:7-38
+		ADDED from C:\Users\Pavilion\Documents\Allo karso stuff\AlloKarso\android\app\src\main\AndroidManifest.xml:13:7-38
 	android:usesCleartextTraffic
 		ADDED from C:\Users\Pavilion\Documents\Allo karso stuff\AlloKarso\android\app\src\debug\AndroidManifest.xml:6:9-44
 	android:name
-		ADDED from C:\Users\Pavilion\Documents\Allo karso stuff\AlloKarso\android\app\src\main\AndroidManifest.xml:6:7-38
-		ADDED from C:\Users\Pavilion\Documents\Allo karso stuff\AlloKarso\android\app\src\main\AndroidManifest.xml:6:7-38
+		ADDED from C:\Users\Pavilion\Documents\Allo karso stuff\AlloKarso\android\app\src\main\AndroidManifest.xml:8:7-38
+		ADDED from C:\Users\Pavilion\Documents\Allo karso stuff\AlloKarso\android\app\src\main\AndroidManifest.xml:8:7-38
+meta-data#com.google.android.geo.API_KEY
+ADDED from C:\Users\Pavilion\Documents\Allo karso stuff\AlloKarso\android\app\src\main\AndroidManifest.xml:14:7-16:64
+	android:value
+		ADDED from C:\Users\Pavilion\Documents\Allo karso stuff\AlloKarso\android\app\src\main\AndroidManifest.xml:16:7-62
+	android:name
+		ADDED from C:\Users\Pavilion\Documents\Allo karso stuff\AlloKarso\android\app\src\main\AndroidManifest.xml:15:7-52
 activity#com.allokarso.MainActivity
-ADDED from C:\Users\Pavilion\Documents\Allo karso stuff\AlloKarso\android\app\src\main\AndroidManifest.xml:12:7-23:18
+ADDED from C:\Users\Pavilion\Documents\Allo karso stuff\AlloKarso\android\app\src\main\AndroidManifest.xml:17:7-28:18
 	android:label
-		ADDED from C:\Users\Pavilion\Documents\Allo karso stuff\AlloKarso\android\app\src\main\AndroidManifest.xml:14:9-41
+		ADDED from C:\Users\Pavilion\Documents\Allo karso stuff\AlloKarso\android\app\src\main\AndroidManifest.xml:19:9-41
 	android:launchMode
-		ADDED from C:\Users\Pavilion\Documents\Allo karso stuff\AlloKarso\android\app\src\main\AndroidManifest.xml:16:9-40
+		ADDED from C:\Users\Pavilion\Documents\Allo karso stuff\AlloKarso\android\app\src\main\AndroidManifest.xml:21:9-40
 	android:windowSoftInputMode
-		ADDED from C:\Users\Pavilion\Documents\Allo karso stuff\AlloKarso\android\app\src\main\AndroidManifest.xml:17:9-51
+		ADDED from C:\Users\Pavilion\Documents\Allo karso stuff\AlloKarso\android\app\src\main\AndroidManifest.xml:22:9-51
 	android:exported
-		ADDED from C:\Users\Pavilion\Documents\Allo karso stuff\AlloKarso\android\app\src\main\AndroidManifest.xml:18:9-32
+		ADDED from C:\Users\Pavilion\Documents\Allo karso stuff\AlloKarso\android\app\src\main\AndroidManifest.xml:23:9-32
 	android:configChanges
-		ADDED from C:\Users\Pavilion\Documents\Allo karso stuff\AlloKarso\android\app\src\main\AndroidManifest.xml:15:9-118
+		ADDED from C:\Users\Pavilion\Documents\Allo karso stuff\AlloKarso\android\app\src\main\AndroidManifest.xml:20:9-118
 	android:name
-		ADDED from C:\Users\Pavilion\Documents\Allo karso stuff\AlloKarso\android\app\src\main\AndroidManifest.xml:13:9-37
+		ADDED from C:\Users\Pavilion\Documents\Allo karso stuff\AlloKarso\android\app\src\main\AndroidManifest.xml:18:9-37
 intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
-ADDED from C:\Users\Pavilion\Documents\Allo karso stuff\AlloKarso\android\app\src\main\AndroidManifest.xml:19:9-22:25
+ADDED from C:\Users\Pavilion\Documents\Allo karso stuff\AlloKarso\android\app\src\main\AndroidManifest.xml:24:9-27:25
 action#android.intent.action.MAIN
-ADDED from C:\Users\Pavilion\Documents\Allo karso stuff\AlloKarso\android\app\src\main\AndroidManifest.xml:20:13-65
+ADDED from C:\Users\Pavilion\Documents\Allo karso stuff\AlloKarso\android\app\src\main\AndroidManifest.xml:25:13-65
 	android:name
-		ADDED from C:\Users\Pavilion\Documents\Allo karso stuff\AlloKarso\android\app\src\main\AndroidManifest.xml:20:21-62
+		ADDED from C:\Users\Pavilion\Documents\Allo karso stuff\AlloKarso\android\app\src\main\AndroidManifest.xml:25:21-62
 category#android.intent.category.LAUNCHER
-ADDED from C:\Users\Pavilion\Documents\Allo karso stuff\AlloKarso\android\app\src\main\AndroidManifest.xml:21:13-73
+ADDED from C:\Users\Pavilion\Documents\Allo karso stuff\AlloKarso\android\app\src\main\AndroidManifest.xml:26:13-73
 	android:name
-		ADDED from C:\Users\Pavilion\Documents\Allo karso stuff\AlloKarso\android\app\src\main\AndroidManifest.xml:21:23-70
+		ADDED from C:\Users\Pavilion\Documents\Allo karso stuff\AlloKarso\android\app\src\main\AndroidManifest.xml:26:23-70
 uses-sdk
 INJECTED from C:\Users\Pavilion\Documents\Allo karso stuff\AlloKarso\android\app\src\debug\AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from C:\Users\Pavilion\Documents\Allo karso stuff\AlloKarso\android\app\src\debug\AndroidManifest.xml
 INJECTED from C:\Users\Pavilion\Documents\Allo karso stuff\AlloKarso\android\app\src\debug\AndroidManifest.xml
 MERGED from [com.facebook.react:flipper-integration:0.73.2] C:\Users\Pavilion\.gradle\caches\transforms-3\50aac7d389ae5d1436ebe9b90990835b\transformed\jetified-flipper-integration-0.73.2-debug\AndroidManifest.xml:5:5-44
 MERGED from [com.facebook.react:flipper-integration:0.73.2] C:\Users\Pavilion\.gradle\caches\transforms-3\50aac7d389ae5d1436ebe9b90990835b\transformed\jetified-flipper-integration-0.73.2-debug\AndroidManifest.xml:5:5-44
+MERGED from [:react-native-vector-icons] C:\Users\Pavilion\Documents\Allo karso stuff\AlloKarso\node_modules\react-native-vector-icons\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:react-native-vector-icons] C:\Users\Pavilion\Documents\Allo karso stuff\AlloKarso\node_modules\react-native-vector-icons\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:react-native-community_geolocation] C:\Users\Pavilion\Documents\Allo karso stuff\AlloKarso\node_modules\@react-native-community\geolocation\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:react-native-community_geolocation] C:\Users\Pavilion\Documents\Allo karso stuff\AlloKarso\node_modules\@react-native-community\geolocation\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:react-native-gesture-handler] C:\Users\Pavilion\Documents\Allo karso stuff\AlloKarso\node_modules\react-native-gesture-handler\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-44
@@ -216,12 +234,14 @@ MERGED from [:react-native-linear-gradient] C:\Users\Pavilion\Documents\Allo kar
 MERGED from [:react-native-linear-gradient] C:\Users\Pavilion\Documents\Allo karso stuff\AlloKarso\node_modules\react-native-linear-gradient\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:react-native-maps] C:\Users\Pavilion\Documents\Allo karso stuff\AlloKarso\node_modules\react-native-maps\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:react-native-maps] C:\Users\Pavilion\Documents\Allo karso stuff\AlloKarso\node_modules\react-native-maps\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:react-native-reanimated] C:\Users\Pavilion\Documents\Allo karso stuff\AlloKarso\node_modules\react-native-reanimated\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:react-native-reanimated] C:\Users\Pavilion\Documents\Allo karso stuff\AlloKarso\node_modules\react-native-reanimated\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:react-native-safe-area-context] C:\Users\Pavilion\Documents\Allo karso stuff\AlloKarso\node_modules\react-native-safe-area-context\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:react-native-safe-area-context] C:\Users\Pavilion\Documents\Allo karso stuff\AlloKarso\node_modules\react-native-safe-area-context\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:react-native-screens] C:\Users\Pavilion\Documents\Allo karso stuff\AlloKarso\node_modules\react-native-screens\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:react-native-screens] C:\Users\Pavilion\Documents\Allo karso stuff\AlloKarso\node_modules\react-native-screens\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-44
-MERGED from [:react-native-vector-icons] C:\Users\Pavilion\Documents\Allo karso stuff\AlloKarso\node_modules\react-native-vector-icons\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-44
-MERGED from [:react-native-vector-icons] C:\Users\Pavilion\Documents\Allo karso stuff\AlloKarso\node_modules\react-native-vector-icons\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:react-native-svg] C:\Users\Pavilion\Documents\Allo karso stuff\AlloKarso\node_modules\react-native-svg\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:react-native-svg] C:\Users\Pavilion\Documents\Allo karso stuff\AlloKarso\node_modules\react-native-svg\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [com.facebook.react:react-android:0.73.2] C:\Users\Pavilion\.gradle\caches\transforms-3\d10d040f6dc36d35e250d48d5ebb15bd\transformed\jetified-react-android-0.73.2-debug\AndroidManifest.xml:10:5-44
 MERGED from [com.facebook.react:react-android:0.73.2] C:\Users\Pavilion\.gradle\caches\transforms-3\d10d040f6dc36d35e250d48d5ebb15bd\transformed\jetified-react-android-0.73.2-debug\AndroidManifest.xml:10:5-44
 MERGED from [com.facebook.fresco:flipper-fresco-plugin:3.1.3] C:\Users\Pavilion\.gradle\caches\transforms-3\2b5ba21ddda073e33e012f0d689623c6\transformed\jetified-flipper-fresco-plugin-3.1.3\AndroidManifest.xml:11:5-44

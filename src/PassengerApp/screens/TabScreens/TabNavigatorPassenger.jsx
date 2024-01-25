@@ -1,5 +1,6 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
 //passenger bottom tab screens
 import HomeScreen from './HomeScreen';
@@ -17,18 +18,20 @@ export default function TabNavigatorPassenger() {
 				tabBarStyle: {
 					height: 60,
 					backgroundColor: 'black',
+					borderTopColor: '#333333',
+					borderTopWidth: 1,
 				},
 				headerShown: false,
 				tabBarActiveTintColor: 'white',
 				tabBarInactiveTintColor: '#AAAAAA',
-				tabBarLabelStyle: { fontSize: 12, paddingBottom: 5 },
+				tabBarLabelStyle: { fontSize: 10, paddingBottom: 10 },
 			}}>
 			<Tab.Screen
 				name='Home'
 				component={HomeScreen}
 				options={{
 					tabBarIcon: ({ color, size }) => (
-						<Ionicons name={'home'} color={color} size={24} />
+						<Ionicons name={'home'} color={color} size={size} />
 					),
 				}}
 			/>
@@ -37,7 +40,7 @@ export default function TabNavigatorPassenger() {
 				component={CityToCityScreen}
 				options={{
 					tabBarIcon: ({ color, size }) => (
-						<Ionicons name={'search'} color={color} size={size} />
+						<Ionicons name={'business'} color={color} size={size} />
 					),
 				}}
 			/>
@@ -46,7 +49,11 @@ export default function TabNavigatorPassenger() {
 				component={FreightScreen}
 				options={{
 					tabBarIcon: ({ color, size }) => (
-						<Ionicons name={'search'} color={color} size={size} />
+						<MaterialCommunityIcons
+							name={'truck'}
+							color={color}
+							size={30}
+						/>
 					),
 				}}
 			/>
@@ -55,11 +62,7 @@ export default function TabNavigatorPassenger() {
 				component={PassengerWalletScreen}
 				options={{
 					tabBarIcon: ({ color, size }) => (
-						<Ionicons
-							name={'newspaper'}
-							color={color}
-							size={size}
-						/>
+						<Ionicons name={'wallet'} color={color} size={size} />
 					),
 				}}
 			/>
