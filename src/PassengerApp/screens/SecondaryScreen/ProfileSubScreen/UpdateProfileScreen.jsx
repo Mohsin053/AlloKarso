@@ -1,19 +1,10 @@
-import {
-	StyleSheet,
-	Text,
-	View,
-	ScrollView,
-	Pressable,
-	Image,
-	TextInput,
-} from 'react-native';
-import Ionicons from 'react-native-vector-icons/Ionicons';
+import { StyleSheet, Text, View, ScrollView, TextInput } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
-import Applogo from '../../../assets/img/cropped.png';
 import AvatarImg from '../../../assets/img/img1.png';
 import { Avatar } from '@rneui/themed';
-import { CheckBox, Icon } from 'react-native-elements';
 import FlagIcon from '../../../components/loginComponents/FlagIcon';
+
+import SecondaryScreenTopBar from '../../../components/MutualComponents/SecondaryScreenTopBar';
 
 export default function UpdateProfileScreen({ navigation }) {
 	return (
@@ -22,51 +13,10 @@ export default function UpdateProfileScreen({ navigation }) {
 				flex: 1,
 				backgroundColor: 'black',
 			}}>
-			<View
-				style={{
-					height: 60,
-					justifyContent: 'space-between',
-					backgroundColor: '#17191B',
-					borderBottomColor: '#333333',
-					borderBottomWidth: 1,
-					flexDirection: 'row',
-					alignItems: 'center',
-				}}>
-				<Pressable
-					onPress={() => navigation.goBack()}
-					hitSlop={{ top: 20, bottom: 20, left: 40, right: 40 }}
-					style={({ pressed }) => [
-						{
-							borderRadius: 20,
-							alignItems: 'center',
-							justifyContent: 'center',
-							padding: 5,
-							marginHorizontal: 5,
-						},
-						pressed && { backgroundColor: 'gray' },
-					]}>
-					<Ionicons
-						name={'chevron-back'}
-						color={'rgba(255, 255, 255, 0.65)'}
-						size={25}
-					/>
-				</Pressable>
-
-				<Text
-					style={{
-						color: 'white',
-						fontWeight: 'bold',
-						textAlign: 'center',
-						fontSize: 16,
-					}}>
-					Update Profile
-				</Text>
-				<Ionicons
-					name={'chevron-back'}
-					color={'transparent'}
-					size={20}
-				/>
-			</View>
+			<SecondaryScreenTopBar
+				navigation={navigation}
+				title={'Update Profile'}
+			/>
 
 			<Avatar
 				size={130}

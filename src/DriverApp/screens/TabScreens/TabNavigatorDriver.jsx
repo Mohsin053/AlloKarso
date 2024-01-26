@@ -7,6 +7,8 @@ import DriverEarningScreen from './DriverEarningScreen';
 import RatingScreen from './RatingScreen';
 import DriverWalletScreen from './DriverWalletScreen';
 import DriverProfileScreen from './DriverProfileScreen';
+import PassengerProfileScreen from '../../../PassengerApp/screens/TabScreens/PassengerProfileScreen';
+import PassengerWalletScreen from '../../../PassengerApp/screens/TabScreens/PassengerWalletScreen';
 
 const Tab = createBottomTabNavigator();
 
@@ -16,14 +18,17 @@ export default function TabNavigatorPassenger() {
 			screenOptions={{
 				tabBarStyle: {
 					height: 60,
-					backgroundColor: '#F5F5F5',
+					backgroundColor: 'black',
+					borderTopColor: '#333333',
+					borderTopWidth: 1,
 				},
 				headerShown: false,
-				tabBarActiveTintColor: '#FF8216',
-				tabBarLabelStyle: { fontSize: 12, paddingBottom: 5 },
+				tabBarActiveTintColor: 'white',
+				tabBarInactiveTintColor: '#AAAAAA',
+				tabBarLabelStyle: { fontSize: 10, paddingBottom: 10 },
 			}}>
 			<Tab.Screen
-				name='Ride Requests'
+				name='Ride request'
 				component={RideRequestScreen}
 				options={{
 					tabBarIcon: ({ color, size }) => (
@@ -32,7 +37,7 @@ export default function TabNavigatorPassenger() {
 				}}
 			/>
 			<Tab.Screen
-				name='Earnings'
+				name='Earning'
 				component={DriverEarningScreen}
 				options={{
 					tabBarIcon: ({ color, size }) => (
@@ -41,7 +46,7 @@ export default function TabNavigatorPassenger() {
 				}}
 			/>
 			<Tab.Screen
-				name='Ratings'
+				name='Rating'
 				component={RatingScreen}
 				options={{
 					tabBarIcon: ({ color, size }) => (
@@ -51,7 +56,7 @@ export default function TabNavigatorPassenger() {
 			/>
 			<Tab.Screen
 				name='Wallet'
-				component={DriverWalletScreen}
+				component={PassengerWalletScreen}
 				options={{
 					tabBarIcon: ({ color, size }) => (
 						<Ionicons name={'wallet'} color={color} size={size} />
@@ -60,7 +65,7 @@ export default function TabNavigatorPassenger() {
 			/>
 			<Tab.Screen
 				name='Profile'
-				component={DriverProfileScreen}
+				component={PassengerProfileScreen}
 				options={{
 					tabBarIcon: ({ color, size }) => (
 						<Ionicons name={'person'} color={color} size={size} />

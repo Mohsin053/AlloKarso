@@ -2,6 +2,8 @@ import { useState } from 'react';
 import { StyleSheet, Text, View, ScrollView, Pressable } from 'react-native';
 import NewRequestScreen from '../SecondaryScreen/citytocitySubscreen/NewRequestScreen';
 import CityOrderScreen from '../SecondaryScreen/citytocitySubscreen/CityOrderScreen';
+
+import TabNavigatorTopBar from '../../components/MutualComponents/TabNavigatorTopBar';
 export default function CityToCityScreen({ navigation }) {
 	const [currentScreen, setCurrentScreen] = useState(0);
 
@@ -16,24 +18,7 @@ export default function CityToCityScreen({ navigation }) {
 				backgroundColor: 'black',
 			}}>
 			{/*Top Bar*/}
-			<View
-				style={{
-					height: 60,
-					justifyContent: 'center',
-					backgroundColor: '#17191B',
-					borderBottomColor: '#333333',
-					borderBottomWidth: 1,
-				}}>
-				<Text
-					style={{
-						color: 'white',
-						fontWeight: 'bold',
-						textAlign: 'center',
-						fontSize: 16,
-					}}>
-					City to City
-				</Text>
-			</View>
+			<TabNavigatorTopBar title={'City to City'} />
 
 			{/*Switching Bar*/}
 			<View

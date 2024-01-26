@@ -12,6 +12,8 @@ import AvatarImg from '../../../assets/img/img1.png';
 import { Avatar } from '@rneui/themed';
 import Applogo from '../../../assets/img/Theme.png';
 
+import SecondaryScreenTopBar from '../../../components/MutualComponents/SecondaryScreenTopBar';
+
 export default function RideDetailsScreen({ navigation }) {
 	return (
 		<ScrollView
@@ -19,51 +21,10 @@ export default function RideDetailsScreen({ navigation }) {
 				flex: 1,
 				backgroundColor: 'black',
 			}}>
-			<View
-				style={{
-					height: 60,
-					justifyContent: 'space-between',
-					backgroundColor: '#17191B',
-					borderBottomColor: '#333333',
-					borderBottomWidth: 1,
-					flexDirection: 'row',
-					alignItems: 'center',
-				}}>
-				<Pressable
-					onPress={() => navigation.goBack()}
-					hitSlop={{ top: 20, bottom: 20, left: 40, right: 40 }}
-					style={({ pressed }) => [
-						{
-							borderRadius: 20,
-							alignItems: 'center',
-							justifyContent: 'center',
-							padding: 5,
-							marginHorizontal: 5,
-						},
-						pressed && { backgroundColor: 'gray' },
-					]}>
-					<Ionicons
-						name={'chevron-back'}
-						color={'rgba(255, 255, 255, 0.65)'}
-						size={25}
-					/>
-				</Pressable>
-
-				<Text
-					style={{
-						color: 'white',
-						fontWeight: 'bold',
-						textAlign: 'center',
-						fontSize: 16,
-					}}>
-					Ride Details
-				</Text>
-				<Ionicons
-					name={'chevron-back'}
-					color={'transparent'}
-					size={20}
-				/>
-			</View>
+			<SecondaryScreenTopBar
+				navigation={navigation}
+				title={'Ride Details'}
+			/>
 
 			<View
 				style={{

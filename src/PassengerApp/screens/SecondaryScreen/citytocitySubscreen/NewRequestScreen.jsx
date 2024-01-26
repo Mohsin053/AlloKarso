@@ -18,7 +18,7 @@ export default function NewRequestScreen({ navigation }) {
 		setactiveButton(a);
 	};
 	const handleButtonPress = (a) => {
-		navigation.navigate('FindingCitytoCityDriver');
+		navigation.navigate('FindingDriver');
 	};
 	return (
 		<View

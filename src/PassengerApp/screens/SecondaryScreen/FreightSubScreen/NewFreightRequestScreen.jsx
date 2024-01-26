@@ -215,7 +215,7 @@ export default function NewFreightRequestScreen({ navigation }) {
 					justifyContent: 'center',
 					marginBottom: 50,
 				}}
-				onPress={() => navigation.navigate('FindingFreightDriver')}>
+				onPress={() => navigation.navigate('FindingDriver')}>
 				<Text
 					style={{
 						color: 'black',

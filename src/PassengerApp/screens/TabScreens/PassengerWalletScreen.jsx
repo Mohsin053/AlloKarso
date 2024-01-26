@@ -1,6 +1,7 @@
 import { StyleSheet, Text, View, ScrollView, Pressable } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { TouchableOpacity } from 'react-native-gesture-handler';
+import TabNavigatorTopBar from '../../components/MutualComponents/TabNavigatorTopBar';
 
 export default function PassengerWakketscreen({ navigation }) {
 	return (
@@ -10,24 +11,7 @@ export default function PassengerWakketscreen({ navigation }) {
 				backgroundColor: 'black',
 			}}>
 			{/*Top Bar*/}
-			<View
-				style={{
-					height: 60,
-					justifyContent: 'center',
-					backgroundColor: '#17191B',
-					borderBottomColor: '#333333',
-					borderBottomWidth: 1,
-				}}>
-				<Text
-					style={{
-						color: 'white',
-						fontWeight: 'bold',
-						textAlign: 'center',
-						fontSize: 16,
-					}}>
-					Wallet
-				</Text>
-			</View>
+			<TabNavigatorTopBar title={'Wallet'} />
 
 			<View
 				style={{

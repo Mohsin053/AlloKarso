@@ -3,6 +3,8 @@ import { StyleSheet, Text, View, ScrollView, Pressable } from 'react-native';
 import NewFreightRequestScreen from '../SecondaryScreen/FreightSubScreen/NewFreightRequestScreen';
 import FreightOrderScreen from '../SecondaryScreen/FreightSubScreen/FrieghtOrderScreen';
 
+import TabNavigatorTopBar from '../../components/MutualComponents/TabNavigatorTopBar';
+
 export default function FreightScreen({ navigation }) {
 	const [currentScreen, setCurrentScreen] = useState(0);
 
@@ -17,24 +19,7 @@ export default function FreightScreen({ navigation }) {
 				backgroundColor: 'black',
 			}}>
 			{/*Top Bar*/}
-			<View
-				style={{
-					height: 60,
-					justifyContent: 'center',
-					backgroundColor: '#17191B',
-					borderBottomColor: '#333333',
-					borderBottomWidth: 1,
-				}}>
-				<Text
-					style={{
-						color: 'white',
-						fontWeight: 'bold',
-						textAlign: 'center',
-						fontSize: 16,
-					}}>
-					Freight
-				</Text>
-			</View>
+			<TabNavigatorTopBar title={'Freight'} />
 
 			{/*Switching Bar*/}
 			<View
