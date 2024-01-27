@@ -1,12 +1,15 @@
-import { useRef, useState } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import { StyleSheet, View, Text, Dimensions, Image } from 'react-native';
-import MapView, { PROVIDER_GOOGLE } from 'react-native-maps';
+import MapView, { PROVIDER_GOOGLE, Marker } from 'react-native-maps';
 import BottomSheet from '@gorhom/bottom-sheet';
 import {
 	ScrollView,
 	FlatList,
 	TouchableOpacity,
 } from 'react-native-gesture-handler';
+import MapViewDirections from 'react-native-maps-directions';
+
+const GOOGLE_MAPS_APIKEY = 'AIzaSyDEBlZDXMpfgJKt8cUjz2JVTEjYqapwaK0';
 
 import economycar from '../../../assets/img/economycar.png';
 import Taxi from '../../../assets/img/Car.png';
@@ -14,7 +17,14 @@ import scooter from '../../../assets/img/scooter.png';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
-
+import {
+	selectOrigin,
+	selectDestination,
+	selectTravelTimeInformation,
+	setRideType,
+	setTravelTimeInformation,
+} from '../../../../utils/navSlice';
+import { useSelector } from 'react-redux';
 const data = [
 	{ id: 0, title: 'Economy', image: economycar },
 	{ id: 1, title: 'Taxi', image: Taxi },
@@ -22,8 +32,27 @@ const data = [
 ];
 
 const RideRequestScreen = ({ navigation }) => {
+	const origin = useSelector(selectOrigin);
+	const destination = useSelector(selectDestination);
 	const bottomSheetRef = useRef(null);
+	const mapRef = useRef(null);
 	const [activeButton, setactiveButton] = useState(0);
+	useEffect(() => {
+		if (!origin || !destination == null) return;
+
+		var i = setInterval(() => {
+			mapRef?.current?.fitToSuppliedMarkers(['origin', 'destination'], {
+				edgePadding: {
+					top: 100,
+					right: 100,
+					left: 100,
+					bottom: 100,
+					animated: true,
+				},
+			});
+			clearInterval(i);
+		}, 50);
+	}, [origin, destination]);
 
 	const handleactiveButtonPress = (a) => {
 		setactiveButton(a);
@@ -31,16 +60,62 @@ const RideRequestScreen = ({ navigation }) => {
 
 	return (
 		<View style={styles.container}>
-			<MapView
-				provider={PROVIDER_GOOGLE}
-				style={styles.map}
-				region={{
-					latitude: 37.78825,
-					longitude: -122.4324,
-					latitudeDelta: 0.015,
-					longitudeDelta: 0.0121,
-				}}
-			/>
+			<View
+				style={{
+					height: '50%',
+					flex: 1,
+				}}>
+				<MapView
+					provider={PROVIDER_GOOGLE}
+					style={{
+						height: '50%',
+					}}
+					showsUserLocation={origin && destination ? false : true}
+					showsCompass={false}
+					region={{
+						latitude: origin.location.lat || 28.456312,
+						longitude: origin.location.lng || -16.252929,
+						latitudeDelta: 0.001,
+						longitudeDelta: 0.01,
+					}}
+					maxZoomLevel={1000}
+					ref={mapRef}>
+					{origin && destination && (
+						<>
+							<Marker
+								coordinate={{
+									latitude: origin.location.lat,
+									longitude: origin.location.lng,
+								}}
+								description={destination.description}
+								identifier='origin'
+							/>
+							<MapViewDirections
+								origin={{
+									latitude: origin.location.lat,
+									longitude: origin.location.lng,
+								}}
+								destination={{
+									latitude: destination.location.lat,
+									longitude: destination.location.lng,
+								}}
+								apikey={GOOGLE_MAPS_APIKEY}
+								strokeWidth={5}
+								strokeColor='blue'
+								dis
+							/>
+							<Marker
+								coordinate={{
+									latitude: destination.location.lat,
+									longitude: destination.location.lng,
+								}}
+								description={destination.description}
+								identifier='destination'
+							/>
+						</>
+					)}
+				</MapView>
+			</View>
 			<BottomSheet
 				ref={bottomSheetRef}
 				snapPoints={['50%']}

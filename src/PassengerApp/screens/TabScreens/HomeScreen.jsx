@@ -1,11 +1,13 @@
-import { useRef, useState } from 'react';
+import { useRef, useState, useEffect, useCallback } from 'react';
 import { StyleSheet, View, Text, Dimensions, Image } from 'react-native';
-import MapView, { PROVIDER_GOOGLE } from 'react-native-maps';
+import MapView, { PROVIDER_GOOGLE, Marker } from 'react-native-maps';
 import BottomSheet from '@gorhom/bottom-sheet';
+import Geolocation from '@react-native-community/geolocation';
 import {
 	ScrollView,
 	FlatList,
 	TouchableOpacity,
+	GestureHandlerRootView,
 } from 'react-native-gesture-handler';
 
 import economycar from '../../assets/img/economycar.png';
@@ -14,36 +16,277 @@ import scooter from '../../assets/img/scooter.png';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
-
+import {
+	selectOrigin,
+	selectDestination,
+	selectTravelTimeInformation,
+	setRideType,
+	setTravelTimeInformation,
+} from '../../../utils/navSlice';
+import { useSelector, useDispatch } from 'react-redux';
+import CommentModal from '../../components/loginComponents/CommentModal';
+import PriceModal from '../../components/loginComponents/PriceModal';
 const data = [
 	{ id: 0, title: 'Economy', image: economycar },
 	{ id: 1, title: 'Taxi', image: Taxi },
 	{ id: 2, title: 'Bike', image: scooter },
 ];
+import MapViewDirections from 'react-native-maps-directions';
+
+const GOOGLE_MAPS_APIKEY = 'AIzaSyDEBlZDXMpfgJKt8cUjz2JVTEjYqapwaK0';
+
+const cars = [
+	{
+		id: '0',
+		type: 'UberX',
+		latitude: 33.7443416,
+		longitude: 73.1086782,
+		heading: 47,
+	},
+	{
+		id: '1',
+		type: 'Comfort',
+		latitude: 33.7443312,
+		longitude: 73.1086782,
+		heading: 190,
+	},
+	{
+		id: '2',
+		type: 'UberXL',
+		latitude: 33.744208,
+		longitude: 73.1086782,
+		heading: 99,
+	},
+	{
+		id: '3',
+		type: 'Comfort',
+		latitude: 33.749999,
+		longitude: 73.108555,
+		heading: 120,
+	},
+];
 
 const HomeScreen = ({ navigation }) => {
+	const [userLocation, setUserLocation] = useState(null);
 	const bottomSheetRef = useRef(null);
 	const [activeButton, setactiveButton] = useState(0);
+	const origin = useSelector(selectOrigin);
+	const destination = useSelector(selectDestination);
+	const dispatch = useDispatch();
+	const [distance, setDistance] = useState('');
+	const [travelTime, setTravelTime] = useState('');
+	const [duration, setDuration] = useState(0);
+	const [price, setPrice] = useState('');
+	const [comment, setComment] = useState('Comments');
+	const mapRef = useRef(null);
+	const SURGE_CHARGE_RATE = 0.5;
+
+	const [isTermsModalOpen, setIsTermsModalOpen] = useState(false);
+	const [isPriceModalOpen, setIsPriceModalOpen] = useState(false);
+	// bottom sheet modal
+	const bottomSheetModalRef = useRef(null);
+	const bottomSheetModalRef1 = useRef(null);
+	const handleOpenTermsModal = () => {
+		bottomSheetModalRef.current?.present();
+		setIsTermsModalOpen(true);
+	};
+
+	const handleCloseTermsModal = (data) => {
+		setIsTermsModalOpen(false);
+	};
+
+	const handleOpenPriceModal = () => {
+		bottomSheetModalRef1.current?.present();
+		setIsPriceModalOpen(true);
+	};
+
+	const handleClosePriceModal = () => {
+		setIsPriceModalOpen(false);
+	};
+
+	const handlesetRequest = () => {
+		dispatch(setRideType(activeButton));
+		navigation.navigate('RideRequestScreen');
+	};
+
+	// effects
+	useEffect(() => {
+		if (!origin || !destination == null) return;
+
+		var i = setInterval(() => {
+			mapRef?.current?.fitToSuppliedMarkers(['origin', 'destination'], {
+				edgePadding: {
+					top: 100,
+					right: 100,
+					left: 100,
+					bottom: 100,
+					animated: true,
+				},
+			});
+			clearInterval(i);
+		}, 50);
+	}, [origin, destination]);
+
+	useEffect(() => {
+		if (!origin || !destination == null) return;
+		const getTravelTime = async () => {
+			try {
+				const res = await fetch(
+					`https://maps.googleapis.com/maps/api/distancematrix/json?origins=${origin.location.lat},${origin.location.lng}&destinations=${destination.location.lat},${origin.location.lng}&key=${GOOGLE_MAPS_APIKEY}`,
+					{
+						headers: {
+							'content-type': 'application/json',
+						},
+					}
+				);
+
+				const response = await res.json();
+				console.log(response.rows[0].elements[0]);
+				setDistance(response.rows[0].elements[0].distance.text);
+				setTravelTime(response.rows[0].elements[0].duration.text);
+				setDuration(response.rows[0].elements[0].duration.value);
+				dispatch(
+					setTravelTimeInformation(response.rows[0].elements[0])
+				);
+			} catch (err) {
+				console.log(err);
+			}
+		};
+		getTravelTime();
+	}, [origin, destination]);
 
 	const handleactiveButtonPress = (a) => {
 		setactiveButton(a);
 	};
 
+	useEffect(() => {
+		// Get user's current location
+		Geolocation.getCurrentPosition(
+			(position) => {
+				const { latitude, longitude } = position.coords;
+				setUserLocation({ latitude, longitude });
+			},
+			(error) => console.log('Error getting location:', error),
+			{ enableHighAccuracy: true, timeout: 20000, maximumAge: 1000 }
+		);
+	}, []);
+
 	return (
-		<View style={styles.container}>
-			<MapView
-				provider={PROVIDER_GOOGLE}
-				style={styles.map}
-				region={{
-					latitude: 37.78825,
-					longitude: -122.4324,
-					latitudeDelta: 0.015,
-					longitudeDelta: 0.0121,
-				}}
-			/>
+		<GestureHandlerRootView style={styles.container}>
+			<View
+				style={{
+					height: '50%',
+					flex: 1,
+				}}>
+				<MapView
+					provider={PROVIDER_GOOGLE}
+					style={{
+						height: '50%',
+					}}
+					showsUserLocation={origin && destination ? false : true}
+					showsCompass={false}
+					region={{
+						latitude: userLocation?.latitude || 28.456312,
+						longitude: userLocation?.longitude || -16.252929,
+						latitudeDelta: 0.001,
+						longitudeDelta: 0.01,
+					}}
+					maxZoomLevel={1000}
+					ref={mapRef}>
+					{cars.map((car) => (
+						<Marker
+							key={car.id}
+							coordinate={{
+								latitude: car.latitude,
+								longitude: car.longitude,
+							}}
+							tracksViewChanges={false}>
+							<Image
+								style={{
+									width: 50,
+									height: 50,
+									resizeMode: 'contain',
+									transform: [
+										{
+											rotate: `${car.heading}deg`,
+										},
+									],
+								}}
+								source={require('../../assets/img/MapCar.png')}
+							/>
+						</Marker>
+					))}
+					{!origin && (
+						<Marker
+							coordinate={{
+								latitude: userLocation?.latitude || 28.456312,
+								longitude:
+									userLocation?.longitude || -16.252929,
+								latitudeDelta: 0.0122,
+								longitudeDelta: 0.0421,
+							}}
+						/>
+					)}
+					{origin?.location && (
+						<Marker
+							coordinate={{
+								latitude: origin.location.lat,
+								longitude: origin.location.lng,
+							}}
+							description={origin.description}
+							identifier='origin'
+						/>
+					)}
+					{destination?.location && (
+						<Marker
+							coordinate={{
+								latitude: destination.location.lat,
+								longitude: destination.location.lng,
+							}}
+							description={destination.description}
+							identifier='destination'
+						/>
+					)}
+					{origin && destination && (
+						<>
+							<Marker
+								coordinate={{
+									latitude: origin.location.lat,
+									longitude: origin.location.lng,
+								}}
+								description={destination.description}
+								identifier='origin'
+							/>
+							<MapViewDirections
+								origin={{
+									latitude: origin.location.lat,
+									longitude: origin.location.lng,
+								}}
+								destination={{
+									latitude: destination.location.lat,
+									longitude: destination.location.lng,
+								}}
+								apikey={GOOGLE_MAPS_APIKEY}
+								strokeWidth={5}
+								strokeColor='blue'
+								dis
+							/>
+							<Marker
+								coordinate={{
+									latitude: destination.location.lat,
+									longitude: destination.location.lng,
+								}}
+								description={destination.description}
+								identifier='destination'
+							/>
+						</>
+					)}
+				</MapView>
+			</View>
+
 			<BottomSheet
 				ref={bottomSheetRef}
-				snapPoints={['60%']}
+				snapPoints={['50%']}
 				backgroundStyle={{
 					borderRadius: 50,
 					backgroundColor: '#17191B',
@@ -118,7 +361,11 @@ const HomeScreen = ({ navigation }) => {
 							width: '100%',
 							marginBottom: 5,
 						}}
-						onPress={() => navigation.navigate('SetLocation')}>
+						onPress={() =>
+							navigation.navigate('SetLocation', {
+								Location: 1,
+							})
+						}>
 						<MaterialCommunityIcons
 							name={'record-circle'}
 							color={'#00A76F'}
@@ -142,7 +389,9 @@ const HomeScreen = ({ navigation }) => {
 									fontWeight: 'light',
 									fontSize: 12,
 								}}>
-								Pick up
+								{origin
+									? origin.name.substring(0, 35) + '...'
+									: 'Pick Up'}
 							</Text>
 						</View>
 					</TouchableOpacity>
@@ -154,7 +403,11 @@ const HomeScreen = ({ navigation }) => {
 							width: '100%',
 							marginBottom: 5,
 						}}
-						onPress={() => navigation.navigate('SetLocation')}>
+						onPress={() =>
+							navigation.navigate('SetLocation', {
+								Location: 2,
+							})
+						}>
 						<MaterialCommunityIcons
 							name={'record-circle'}
 							color={'#FF4C4C'}
@@ -179,17 +432,46 @@ const HomeScreen = ({ navigation }) => {
 									fontWeight: 'light',
 									fontSize: 12,
 								}}>
-								Destination
+								{destination
+									? destination.name.substring(0, 35) + '...'
+									: 'Destination'}
 							</Text>
 						</View>
 					</TouchableOpacity>
+					{origin && destination && (
+						<View
+							style={{
+								alignItems: 'center',
+								justifyContent: 'center',
+								borderRadius: 12,
+								backgroundColor: 'rgba(255, 255, 255, 0.65)',
+								height: 40,
+								marginBottom: 5,
+								width: '90%',
+								marginLeft: 'auto',
+							}}
+							onPress={() =>
+								navigation.navigate('RideRequestScreen')
+							}>
+							<Text
+								style={{
+									color: 'black',
+									fontWeight: 'bold',
+									fontSize: 12,
+								}}>
+								{distance}-{travelTime}
+							</Text>
+						</View>
+					)}
+
 					<TouchableOpacity
 						style={{
 							flexDirection: 'row',
 							alignItems: 'center',
 							width: '100%',
 							marginBottom: 5,
-						}}>
+						}}
+						onPress={handleOpenPriceModal}>
 						<FontAwesome
 							name={'dollar'}
 							color={'white'}
@@ -213,7 +495,10 @@ const HomeScreen = ({ navigation }) => {
 									fontWeight: 'light',
 									fontSize: 12,
 								}}>
-								Offer our fare
+								{new Intl.NumberFormat('en-gb', {
+									style: 'currency',
+									currency: 'MAD',
+								}).format((duration * SURGE_CHARGE_RATE) / 100)}
 							</Text>
 						</View>
 					</TouchableOpacity>
@@ -224,7 +509,8 @@ const HomeScreen = ({ navigation }) => {
 							alignItems: 'center',
 							width: '100%',
 							marginBottom: 5,
-						}}>
+						}}
+						onPress={handleOpenTermsModal}>
 						<Ionicons
 							name={'chatbubble'}
 							color={'white'}
@@ -248,7 +534,7 @@ const HomeScreen = ({ navigation }) => {
 									fontWeight: 'light',
 									fontSize: 12,
 								}}>
-								Comments
+								{comment}
 							</Text>
 						</View>
 					</TouchableOpacity>
@@ -262,21 +548,29 @@ const HomeScreen = ({ navigation }) => {
 							height: 50,
 							marginBottom: 10,
 						}}
-						onPress={() =>
-							navigation.navigate('RideRequestScreen')
-						}>
+						onPress={handlesetRequest}>
 						<Text
 							style={{
 								color: 'black',
 								fontWeight: 'bold',
 								fontSize: 12,
 							}}>
-							Choose on map
+							Find ride
 						</Text>
 					</TouchableOpacity>
 				</ScrollView>
 			</BottomSheet>
-		</View>
+			<CommentModal
+				isOpen={isTermsModalOpen}
+				onClose={handleCloseTermsModal}
+				bottomSheetModalRef={bottomSheetModalRef}
+			/>
+			<PriceModal
+				isOpen={isPriceModalOpen}
+				onClose={handleClosePriceModal}
+				bottomSheetModalRef1={bottomSheetModalRef1}
+			/>
+		</GestureHandlerRootView>
 	);
 };
 
