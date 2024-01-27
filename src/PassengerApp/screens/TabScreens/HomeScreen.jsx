@@ -145,6 +145,12 @@ const HomeScreen = ({ navigation }) => {
 				setDistance(response.rows[0].elements[0].distance.text);
 				setTravelTime(response.rows[0].elements[0].duration.text);
 				setDuration(response.rows[0].elements[0].duration.value);
+				setPrice(
+					new Intl.NumberFormat('en-gb', {
+						style: 'currency',
+						currency: 'MAD',
+					}).format((duration * SURGE_CHARGE_RATE) / 100)
+				);
 				dispatch(
 					setTravelTimeInformation(response.rows[0].elements[0])
 				);
@@ -175,13 +181,13 @@ const HomeScreen = ({ navigation }) => {
 		<GestureHandlerRootView style={styles.container}>
 			<View
 				style={{
-					height: '50%',
+					height: '40%',
 					flex: 1,
 				}}>
 				<MapView
 					provider={PROVIDER_GOOGLE}
 					style={{
-						height: '50%',
+						height: '40%',
 					}}
 					showsUserLocation={origin && destination ? false : true}
 					showsCompass={false}
@@ -286,7 +292,7 @@ const HomeScreen = ({ navigation }) => {
 
 			<BottomSheet
 				ref={bottomSheetRef}
-				snapPoints={['50%']}
+				snapPoints={['60%']}
 				backgroundStyle={{
 					borderRadius: 50,
 					backgroundColor: '#17191B',
@@ -495,10 +501,7 @@ const HomeScreen = ({ navigation }) => {
 									fontWeight: 'light',
 									fontSize: 12,
 								}}>
-								{new Intl.NumberFormat('en-gb', {
-									style: 'currency',
-									currency: 'MAD',
-								}).format((duration * SURGE_CHARGE_RATE) / 100)}
+								{price}
 							</Text>
 						</View>
 					</TouchableOpacity>

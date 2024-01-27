@@ -21,7 +21,7 @@ import {
 	selectOrigin,
 	selectDestination,
 	selectTravelTimeInformation,
-	setRideType,
+	selectRideType,
 	setTravelTimeInformation,
 } from '../../../../utils/navSlice';
 import { useSelector } from 'react-redux';
@@ -34,6 +34,8 @@ const data = [
 const RideRequestScreen = ({ navigation }) => {
 	const origin = useSelector(selectOrigin);
 	const destination = useSelector(selectDestination);
+	const ridetype = useSelector(selectRideType);
+
 	const bottomSheetRef = useRef(null);
 	const mapRef = useRef(null);
 	const [activeButton, setactiveButton] = useState(0);
@@ -143,7 +145,7 @@ const RideRequestScreen = ({ navigation }) => {
 								alignSelf: 'center',
 							}}>
 							<Image
-								source={data[1].image}
+								source={data[ridetype].image}
 								style={{
 									height: 40,
 									resizeMode: 'center',
@@ -156,7 +158,7 @@ const RideRequestScreen = ({ navigation }) => {
 									fontSize: 12,
 									textAlign: 'center',
 								}}>
-								{data[1].title}
+								{data[ridetype].title}
 							</Text>
 						</View>
 						<View
@@ -187,7 +189,7 @@ const RideRequestScreen = ({ navigation }) => {
 										fontWeight: 'light',
 										fontSize: 12,
 									}}>
-									Pick up
+									{origin.name.substring(0, 30) + '...'}
 								</Text>
 							</View>
 						</View>
@@ -219,7 +221,7 @@ const RideRequestScreen = ({ navigation }) => {
 										fontWeight: 'light',
 										fontSize: 12,
 									}}>
-									Pick up
+									{destination.name.substring(0, 30) + '...'}
 								</Text>
 							</View>
 						</View>
